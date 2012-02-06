@@ -43,6 +43,8 @@
 		<key>Scripts</key>
 		<dict/>
 	</dict>
+	<key>Description</key>
+	<string>go to the reddit comments for a given imgur link</string>
 	<key>ExtensionInfoDictionaryVersion</key>
 	<string>1.0</string>
 	<key>Permissions</key>
@@ -59,5 +61,7 @@
 			<string>Some</string>
 		</dict>
 	</dict>
+	<key>Website</key>
+	<string>https://github.com/jeremywho/take_me_to_your_reddit</string>
 </dict>
 </plist>
