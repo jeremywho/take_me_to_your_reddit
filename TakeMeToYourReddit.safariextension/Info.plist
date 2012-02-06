@@ -5,7 +5,7 @@
 	<key>Author</key>
 	<string>jeremywho</string>
 	<key>Builder Version</key>
-	<string>7534.52.7</string>
+	<string>7534.53.10</string>
 	<key>CFBundleDisplayName</key>
 	<string>Take Me To Your Reddit</string>
 	<key>CFBundleIdentifier</key>
@@ -28,7 +28,7 @@
 				<key>Identifier</key>
 				<string>tmtyr</string>
 				<key>Image</key>
-				<string>tabicon.png</string>
+				<string>icon.png</string>
 				<key>Label</key>
 				<string>Take Me To Your Reddit</string>
 				<key>Palette Label</key>

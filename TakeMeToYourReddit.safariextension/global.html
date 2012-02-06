@@ -1,10 +1,19 @@
 <!DOCTYPE HTML>
+<!--
+Take Me To Your Reddit
+Jeremy Daughhetee 2012
+http://github.com/jeremywho/
+ -->
 <html>
 <head>
-	<script type="text/javascript" charset="utf-8">			
+	<script type="text/javascript" charset="utf-8">	
+		var timerResult;
+		
 		function performCommand(event)
-		{
+		{			
 		    if (event.command === "tmtyr") {
+			
+				clearTimeout(timerResult);
 				var currentURL = event.target.browserWindow.activeTab.url;
 				
 				//check if current url is an image or an imgur page
@@ -20,13 +29,22 @@
 				xmlhttp.onreadystatechange = function (oEvent) {  
 				  if (xmlhttp.readyState === 4) {  
 				    if (xmlhttp.status === 200) {  
+						clearTimeout(timerResult);
 						xmlDoc = xmlhttp.responseText
 						//regex to match the url we want to load
 						//TODO: make this suck less
 						var re = RegExp('"[^"\r\n]*www.reddit.com.*"');
 						
-						result = re.exec(xmlDoc).toString();
+						var result = "";
+						var regexResult = re.exec(xmlDoc);
 				
+						if(regexResult === null) {
+							//alert("Could not find a Reddit link.");
+							return;
+						}
+						
+						result = regexResult.toString();
+							
 						//console.log("pattern match: " + result);											
 						//console.log("result length: " + result.toString().length); 
 						
@@ -46,8 +64,18 @@
 				    }  
 				  }  
 				};
-				xmlhttp.send();				
+				
+				console.log("about to send()");
+				xmlhttp.send();			
+				
+				console.log("about to setTimeout");
+				timerResult = setTimeout(function() { httpRequestTimedOut(xmlhttp) }, 10000);	
 			}			
+		}
+		
+		function httpRequestTimedOut(request) {
+			//alert("Request for imgur page timed out.");
+			request.abort();
 		}
 		
 		
